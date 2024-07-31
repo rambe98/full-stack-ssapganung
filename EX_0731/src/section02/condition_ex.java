@@ -82,9 +82,8 @@ public class condition_ex {
 		
 		System.out.print("공의 개수는?");
 		int y= sc.nextInt();
-		
-		int x = 5,less= x%y,result= y/x;
-		if (less >=0) {
+		int x = 5,less= y%x,result= y/x;
+		if (less > 0) {
 			result++;
 		}
 		System.out.println(result);
