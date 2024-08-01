@@ -1,2 +1,2 @@
 # full-stack-ssapganung
-산대특 강의 내용 정리
+날짜별 진행한 내용 정리
