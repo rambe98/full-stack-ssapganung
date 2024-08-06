@@ -19,7 +19,7 @@ public class updownMain {
 		Scanner sc = new Scanner(System.in);
 		updown ud = new updown();
 		
-		while(true) {
+		while(true) {// 정답을 맞출때까지 반복해야하고 몇번만에 맞출 지 모르기에 while문 사용
 			System.out.print("숫자입력 : ");
 			int num = sc.nextInt();
 			if(ud.check(num).equals("정답!")) {
@@ -27,7 +27,7 @@ public class updownMain {
 				break;
 			} else {
 				System.out.println(ud.check(num));
-				ud.count++;
+				ud.count++;//틀릴때마다 카운트 증가
 			}
 		}
 	}
