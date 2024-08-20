@@ -118,7 +118,43 @@
 	보조 스트림 중에서는 다음과 같이 메모리 버퍼를 추가로 제공하여 스트림의 성능을 향상시키는 것들이 있다.
 	바이트 기반 스트림: BufferedInputStream,BufferedOutputStream
 	문자 기반 스트림 : BufferedReader,BufferedWriter
+
+	문자 기반 보조 스트림 (EX_0820 / buffered 패키지 참조)
+	BufferedReader는 Reader에 BufferedWriter는 Writer에 연결되어 
+	버퍼를 제공해주는 보조스트림이다.
+	바이트 기반 스트림과 마찬가지로 보조 스트림을 사용해 성능을 향상시킬 수 있다.
+	BufferedReader 또는 BufferedWriter의 경우, 
+	버퍼에 데이터를 저장하여 입력 또는 출력하기 때문에 한 단어 뿐만 아니라 
+	문장 단위로 데이터를 읽거나 쓸 수 있다.
 	
+	문자 변환 보조 스트림 (EX_0820 / buffered 패키지 참조)
+	바이트 기반 스트림으로 텍스트 파일을 읽거나 쓸 경우, 
+	한글을 포함한 비영여권 문자들이 정상적으로 출력되지 않았다.
+	소스 스트림이 바이트 기반의 스트림이고, 입출력 데이터가 문자라면 
+	Reader와 Writer로 변환하여 사용하는것을 고려해야 한다.
+	그 이유는 Reader와 Writer는 문자 단위로 입출력하기 때문에 
+	바이트 기반 스트림보다 다양한 문자를 입출력할 수 있기 때문이다.
+	
+	InputStreamReader (EX_0820 / buffered 패키지 / BufferedInput_ex03 참조)
+	InputStreamReader는 바이트 기반 스트림 InputStream을 
+	문자 기반의 스트림 Reader로 변환하는 보조 스트림이다.
+	
+	FileInputStream in = new ...
+	InputStreamReader is = new InputStreamReader(in);
+	InputStreamReader is = new InputStreamReader(in, text-encoding);
+	
+	InputStreamReader를 선언할 때는 text-encoding을 선택해 선언할 수 있다.
+	개발 환경의 text-encoding이 기본적으로 지정되어 사용된다.
+	만약 개발 환경이 읽어 들이는 파일의 text-encoding과 다르다면 직접 지정해야 한다.
+	
+	OutputStreamWriter (EX_0820 / buffered 패키지 / outputstreamwriter_ex04 참조)
+	OutputStreamWriter는 바이트 기반 스트림 OutputStream을 
+	문자 기반의 스트림 Writer로 변환하는 보조스트림이다.
+	
+	FileOutputStream out = new ...;
+	OutputStreamWriter is = new OutputStreamWriter(out);
+	OutputStreamWriter is = new OutputStreamWriter(out,text-encoding);
+ 
  */
 
 
