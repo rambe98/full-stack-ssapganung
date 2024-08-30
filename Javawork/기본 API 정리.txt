@@ -1,0 +1,49 @@
+기본 API 클래스
+
+java.lang 패키지
+java.lang 패키지는 자바 프로그램의 기본적인 클래스를 담고 있는 패키지다.
+가령 우리가 Scanner를 사용하려 한다면 스캐너를 import해줘야 사용할 수 있다.
+그러나 System, String등과 같은 클래스는 따로 선언 없이 사용이 가능했다.
+
+클래스			용도
+Object			자바 클래스의 최상위 클래스로 사용
+System			시스템의 표준 입력/출력 장치로부터 데이터를 입력받거나 출력하기 위해 사용
+			자바 가상 기계를 종료할 때 사용
+String			문자열을 저장하고 여러 가지 정보를 얻을 때 사용
+StringBuffer/StringBuilder	문자열을 저장하고 내부 문자열을 조작할 때 사용
+Math			수학 함수를 이용할 때 사용
+
+Object클래스
+Object클래스는 자바의 최상위 클래스이다.
+자바에서 생성되는 모든 클래스는 생성될 때 상속을 하지 않아도 Object를 자동으로 상속받게 되어있다.
+따라서 클래스를 생성하면 Object가 가지고 있는 여러 메서드를 그대로 사용하거나 Override하여 사용할 수 있다.
+
+
+메서드			설명
+protected Object clone()	객체 자신을 복사한 후 반환
+boolean equals(Object obj)	다른 객체와 자신이 가진 실제 값을 비교
+int hashCode()		객체의 hashCode 값을 반환
+String toString()		객체 자신의 정보를 반환
+
+equals()메서드
+기본 자료형의 데이터들의 동등 비교를 위해서 '==' 비교 연산자를 사용한다.
+하지만 객체를 동등비교 할 경우, 해당 객체의 값을 비교하는 것이 아니라, 객체가 메모리에 있는 위치를 비교하게 된다.
+객체의 데이터를 비교할 때는 equals()메서드를 override하여 사용한다.
+
+String클래스
+String클래스는 문자열을 처리하는 객체형 데이터 타입이다.
+일반적으로 기본 데이터 타입들과 마찬가지로 문자열 데이터를 담는 간단한 형식으로 사용하지만
+문자열츨 차리하기 위한 다양한 기능들을 가지고 있다.
+String객체는 한 번 생성되면 그 값을 읽기만 하고 변경할 수 없다.
+
+메서드					설명
+int length()				문자열의 길이를 반환
+char charAt(int index)			문자열을 하나의 단어 단위로 출력
+					파라미터로는 추출할 문자의 위치를 받는다.
+int indexOf(String ch)			문자열에 포함된 단어 또는 문자열의 위치를 앞에서부터 검색했을 때 일치하는 위치의 인덱스 값을 반환(없을 경우 -1을 반환)
+int indexOf(int ch)	
+String replace(변경할 문자, 변경 문자)		단어 또는 문장에 있는 특정 단어를 변경
+String substring(int beginIndex)		문자열을 원하는 위치에서 자를 때 사용
+					입력된 시작 위치부터 문자열의 마지막까지 반환
+String substring(int beginIndex,int endIndex)	문자열을 입력된 시작 위치부터 마지막 위치 전까지의 값을 리턴
+
