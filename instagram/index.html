@@ -12,12 +12,15 @@
     <p>태그는 줄바꿈을 표현하는 block이라는 속성이 있기 때문에
         옆에 글이 올 수 없다. -->
     <div>
-        <img src="image/ex_img.png" width="150px">
+        <img  src="image/ex_img.png" width="150px">
         <input type="search" value="검색">
     </div>
         
     <div id = "profile">  
-        <img src="image/cat_img.jpg" width="50px">
+        <div id="profile_pic">
+            <img class="circle_pic" src="image/cat_img.jpg">
+        </div>
+        
         <div>
             <h2>half_bottle</h2>
             <button>프로필 편집</button>
@@ -39,35 +42,34 @@
                 <a href="https://needleworm.github.io">needleworm.github.io</a>
             </p>
     </div>
-    <div>
+    <div id="highlight_area">
         <div class="highlight">
-            <div>
-                <img src="image/high1.jpg" height="35px">
+            <div id="highlight_pic">
+                <img class="circle_pic" src="image/high1.jpg"/>
             </div>
             <div>
                 😎
             </div>
         </div>
         <div class="highlight">
-            <div>
-                <img src="image/high2.jpg" height="35px">
+            <div id="highlight_pic">
+                <img class="circle_pic" src="image/high2.jpg"/>
             </div>
             <div>
-                😊
+                🥰
             </div>
         </div>
-    </div>
 
-    <div>
-            <div>
+    <div class="stat_bar">
+            <div class="stat">
                 게시물<br/>
                 133
             </div>
-            <div>
+            <div class="stat">
                 팔로워<br/>
                 408
             </div>
-            <div>
+            <div class="stat">
                 팔로우<br/>
                 189
             </div>
@@ -77,18 +79,22 @@
         아이콘 들어갈 자리
     </div>
     <div>
-        <img src="image/thumbnails/a1.jpg" width="32%">
-        <img src="image/thumbnails/a2.jpg" width="32%">
-        <img src="image/thumbnails/a3.jpg" width="32%">
-        <img src="image/thumbnails/a4.jpg" width="32%">
-        <img src="image/thumbnails/a5.jpg" width="32%">
-        <img src="image/thumbnails/a6.jpg" width="32%">
-        <img src="image/thumbnails/a7.jpg" width="32%">
-        <img src="image/thumbnails/a8.jpg" width="32%">
-        <img src="image/thumbnails/a9.jpg" width="32%">
+        <div class="thumbnail_grid">
+            <img src="image/thumbnails/a1.jpg" class="thumbnail">
+            <img src="image/thumbnails/a2.jpg" class="thumbnail">
+            <img src="image/thumbnails/a3.jpg" class="thumbnail">
+        </div>
+        <div class="thumbnail_grid">
+            <img src="image/thumbnails/a4.jpg" class="thumbnail">
+            <img src="image/thumbnails/a5.jpg" class="thumbnail">
+            <img src="image/thumbnails/a6.jpg" class="thumbnail">
+        </div>
+        <div class="thumbnail_grid">
+            <img src="image/thumbnails/a7.jpg" class="thumbnail">
+            <img src="image/thumbnails/a8.jpg" class="thumbnail">
+            <img src="image/thumbnails/a9.jpg" class="thumbnail">
+        </div>
     </div>
-
-
 
 </body>
 </html>
