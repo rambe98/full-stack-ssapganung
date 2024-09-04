@@ -2,13 +2,18 @@ h2{
     color: red;
 }
 /*클래스 선택자 쓸 때는 .클래스값으로 써야한다*/
-.highlight{
-    border: solid;
-    border-color: rgb(0, 0, 0);
+/* 아이디 선택자를 쓸 때는 #아이디값으로 써야한다*/
+
+/*둥근 사진 css*/
+.circle_pic{
+    border: solid black 1px;
+    border-radius: 50%;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
-/* 아이디 선택자를 쓸 때는 #아이디값으로 써야한다*/
+/*--------------------------------------------------*/
+/* 프로필 css*/
 #profile{
     border: solid;
     border-color: blue;
@@ -17,14 +22,22 @@ h2{
     width: 50px;
     width: 50px;
 }
-
-
+/*--------------------------------------------------*/
+/* 하이라이트 css*/
+.highlight{
+    border: solid;
+    border-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
 #highlight_pic{
     width: 35px;
     height: 35px;
     object-fit: cover;
     border-radius: 50%;
 }
+/*--------------------------------------------------*/
+/* 스테이터스 css*/
 .stat{
     width: 100;
     text-align: center;
@@ -41,14 +54,8 @@ h2{
     border-top: solid 1px gray;
     border-bottom: solid 1px gray;
 }
-
-.circle_pic{
-    border: solid black 1px;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+/*--------------------------------------------------*/
+/*게시글*/
 .thumbnail_grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;    
@@ -56,3 +63,4 @@ h2{
 .thumbnail{
     width: 100%;   
 }
+/*--------------------------------------------------*/
