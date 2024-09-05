@@ -1,40 +1,112 @@
-h2{
-    color: red;
-}
 /*클래스 선택자 쓸 때는 .클래스값으로 써야한다*/
 /* 아이디 선택자를 쓸 때는 #아이디값으로 써야한다*/
 
 /*둥근 사진 css*/
 .circle_pic{
-    border: solid black 1px;
+    border: solid white 1px;
     border-radius: 50%;
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+/*--------------------------------------------------*/
+/*top*/
+#top{
+    display: grid;
+    grid-template-columns: 4fr 7fr 5fr;
+    height: 10vw;
+    border-bottom: solid gray 0.1px;
+    margin-bottom: 1vw;
+}
+#top img {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 23vw;
+    object-fit: contain;
+
+}
+#top input {
+    height: 60%;
+    width: 95%;
+    margin: auto;
+    text-align: left;
+    background-color: rgb(250, 250, 250);
+    border: solid gray 1px;
+    border-radius: 3px;
+
+    font-size: 3vw;
+    font-weight: 100;
+}
+i {
+    color:gray;
+}
+i:hover{
+    color: black;
+}
+#heart:hover{
+    color: red;
+}
+#top i {
+    font-size: 5vw;
+    margin-right: 3px;
+    object-fit: cover;
+    
+}
+#top div {
+    text-align:center;
+    padding-top:3vw;
 }
 /*--------------------------------------------------*/
 /* 프로필 css*/
 #profile{
-    border: solid;
-    border-color: blue;
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;
 }
 #profile_pic{
-    width: 50px;
-    width: 50px;
+    width: 15vw;
+    height: 15vw;
+}
+#profile_info{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    height: 15vw;
+}
+#id{
+    font-size: 6vw;
+    font-weight: 100;
+}
+button {
+    height: 80%;
+    width: 95%;
+
+    font-size:3vw;
+    background-color: white;
+    border: solid gray 1px;
+    border-radius: 3px;
+    
+}
+button:hover{
+    color: #fff;
+    background-color: rgb(126, 126, 126);
+    text-decoration: none;
 }
 /*--------------------------------------------------*/
 /* 하이라이트 css*/
 .highlight{
-    border: solid;
-    border-color: rgb(0, 0, 0);
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 #highlight_pic{
     width: 35px;
     height: 35px;
-    object-fit: cover;
-    border-radius: 50%;
+    margin: auto;
+    
+}
+#highlight_area{
+    display: grid;
+    grid-template-columns: 45px 45px 1fr;
 }
 /*--------------------------------------------------*/
 /* 스테이터스 css*/
@@ -53,6 +125,21 @@ h2{
     margin-bottom: 5px;
     border-top: solid 1px gray;
     border-bottom: solid 1px gray;
+}
+/*--------------------------------------------------*/
+/*아이콘*/
+#sub_icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    text-align: center;
+    font-size: 5vw;
+    
+    height: 8vw;
+}
+
+.selected{
+    border-bottom: solid gray 3px;
 }
 /*--------------------------------------------------*/
 /*게시글*/
