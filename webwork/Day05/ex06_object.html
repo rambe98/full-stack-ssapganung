@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+/*
+2.생성자를 이용한 객체의 생성
+자바스크립트는 prototype 기반 객체지향 프로그래밍 언어이다.
+따라서 자바스크립트의 동작 원리를 이해하기 위해서는 prototype의 개념을 이해해야 한다.
+prototype기반 객체지향 프로그래밍 언어는 클래스 없이(Class-less)도 객체를 생성할 수 있다.
+메서드를 생성자 처럼 사용하여 새롭게 생성되는 객체를 초기화 하는 역할을 한다.
+*/
+        //자바 스크립트 객체의 특징
+        var person = { name : "홍길동", age: 30};
+        // 객체출력 방법
+        document.write('person.name : ',person.name+"<br>");
+		document.write('person.age : ',person.age+"<br>");
+		document.write("<hr>");
+        document.write("person['name'] : ",person['name'],"<br>");
+		document.write("person['age'] : ",person['age']+"<br>");
+		document.write("<hr>");
+        // 프로퍼티 추가하기
+        // 없는걸 사용하려고 하면 추가가 된다.
+        person.bt = 'AB';
+		document.write("person['bt'] : ",person['bt'],"<br>");
+		document.write("<hr>");
+        // 객체에서 프로퍼티 삭제 하기
+        // delete연산자를 사용하면 오브젝트의 프로퍼티를 삭제할 수 있더.
+        // 이때 피 연산자는 프로퍼티의 키여야한다.
+        delete person.bt;
+		document.write('bt : ' + person['bt']+"<br>");
+		document.write("<hr>");
+        // 프로퍼티가 객체 속해 있는지 확인하는 법
+        // in 연산자를 사용한다
+        document.write('name in person : '+('name' in person, '<br>'));
+        document.write('address in person : '+('address' in person, '<br>'));
+		document.write("<hr>");
+        //for-in문을 사용하면 객체(배열 포함)에 포함된 모든 프로퍼티에 대해 루프를 수행할 수 있다.
+		//i에 객체의 프로퍼티 이름이 반환된다. 단, 순서는 보장되지 않는다.
+        for(i in person){
+			document.write(`${i} = ${person[i]}<br>`);
+		}
+		document.write("<hr>");
+        //새로운 객체에 기존 객체를 참조 시킬수 있다. 
+        //주소값을 복사해오기 때문에 person의 속성값을 변경하면 같이 바뀐다.
+		var person2 = person;
+		person.age = 40;
+		document.write('person2.age : ',person2['age']); //결과 40
+        document.write('person2.age : ',person2.age); //결과 40
+        document.write("<hr>");
+        //객체 안에 객체가 들어갈 수 있다.
+		var circle = {
+		    center : {x : 1.0, y: 2.0},
+		    radius : 2.5
+    	}
+        document.write('circle.center.x : ',circle.center.x,' circle.center.y : ',circle.center.y+"<br>");
+		document.write('circle.radius : ',circle.radius+"<br>");
+		document.write("<hr>");
+        //객체 안에 함수가 들어갈 수 있다.
+		var person = {
+			name : "홍길동",
+			age : 30,
+			getInfo : function(){
+			document.write('이름 : ',this.name,"<br>",'나이 : ',this.age,"<br>");
+			}
+		};
+		//함수의 호출
+		person.getInfo();
+
+        // 빈 객체의 생성
+        var person = new Object();
+        
+        /*
+        2.1 Object 생성자 함수
+        new 연산자와 Object생성자 함수를 호출하여 빈 객체를 생성할 수 있다.
+        빈 객체 생성 후 프로퍼티 또는 메서드를 추가하여 객체를 완성하는 방법이다.
+        */
+        // 프로퍼티 추가
+        person.name = 'Lee';
+        person.gender = 'male';
+        person.sayHello = function () {
+        document.write('Hi! My name is ' + this.name);
+        };
+        document.write(person.name,'<br>');
+        person.sayHello();
+        /*
+        2.2 생성자 함수
+        객체 리터럴과 Object 생성자 함수 방식으로 객체를 
+        생성하는 것은 property 값만 다른 여러 개의 객체를 생성할 때 불편하다.
+        동일한 프로퍼티를 갖는 객체임에도 불구하고 매번 같은 프로퍼티를 기술해야 한다.
+        생성자 함수를 사용하면 마치 객체를 사용하기 위한 클래스 처럼 사용하여 
+        프로퍼티가 동일한 여러 객체를 간편하게 생성할 수 있다.
+
+        생성자 함수의 이름은 일반적으로 대문자로 시작한다.(메서드 중에서 생성자라는것을 인식하는데 도움이 된다.)
+        property 또는 methodName 앞에 쓴 this는 생성자 함수가 생성할 instance를 가리킨다.
+        this에 binding되어있는 property와 method는 기본적으로 public 이므로 외부에서 참조 가능하다.
+        constructorMethod 내에서 선언된 일반 변수는 private이 되어 외부에서 참조가 불가능하다
+        */
+        document.write("<hr>");
+        // 생성자 함수
+        function Person(name, gender) {
+            let married = true; //써도 지역 함수라 안나옴
+            this.name = name;
+            this.gender = gender;
+            this.sayHello = function(){
+                document.write('Hi! My name is ' + this.name + '<br>');
+                
+                document.write(married);
+            };
+        };
+        
+        // 인스턴스의 생성
+        let person4 = new Perso
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        n('Lee', 'male');
+        let person5 = new Person('Kim', 'female');
+
+        console.log('person: ', typeof person4);
+        console.log('person: ', typeof person5);
+        console.log('person: ', person4);
+        console.log('person: ', person5);
+
+        person4.sayHello();
+        document.write("<hr>");
+        person5.sayHello();
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
