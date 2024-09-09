@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fl { float:left; }
+        div#div1 { padding:200px 50px 200px 150px;}
+        div#div2 { padding:200px 50px 200px 30px;}
+        div#div2 input[type="text"] { padding-top:5px; margin-bottom:5px; }
+        div#div2 input[type="password"] { padding-top:5px; margin-bottom:5px; }
+        div#div2 input[type="submit"] { padding:17px; margin-left:4px; }
+    </style>
+</head>
+<body>
+    <form action="next_page.html"></form>
+		<div style="border:1px solid black;">
+			<div id="div1" class="fl">
+				<img src="http://koreaisacademy.com/renewal2016/img/mainNew/it_logo_sp.png"/>
+			</div>
+			<div id="div2" class="fl">
+				<div class="fl">
+					<input type="text" name="id" placeholder="아이디"/> <br/>			
+					<input type="password" name="pw" placeholder="비밀번호"/> <br/>			
+				</div>
+				<div class="fl">
+					<input type="submit" value="로그인"/>
+				</div>
+				<div style="clear:both;"></div>
+				<input type="checkbox" name="chk_save" value="save"/> 아이디 저장
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</form>
+</body>
+</html>
