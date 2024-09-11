@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td{
+            border: solid 1px black;
+        }
+        #a1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form name="ff">
+        <table >
+            <tr>
+                <td>ID:</td>
+                <td><input name="m_id" placeholder="ID입력"></td>
+            </tr>
+            <tr>
+                <td>AGE:</td>
+                <td><input name="m_age" placeholder="나이 입력"></td>
+            </tr>
+            <tr>
+                <td>PWD:</td>
+                <td><input name="password" placeholder="비번입력" type="password"></td>
+            </tr>
+            <tr id="a1"> 
+                <td colspan="2"><input type="button" value="전송"/></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        //forms : 현재 html 문서 내의 form 들을 순차적으로 배열로 정의해둔 상태
+        // body에서 form태그가 여러개 존재할 경우 
+        // forms 배열에 0,1,2 등의 인덱스로 form태그를 구별한다
+        
+        function check(){
+            
+            //let form = document.forms[0];
+            //form 태그에서 m_id 라는 name 속성을 가지고 있는 태그의 값을 가져온다
+            
+            // form 태그에 준 이름을 가지고 검색할 수 있다.
+            let form = document.ff;
+
+            let myId = form.m_id.value;
+            let age = form.m_age.value;
+            let pwd = form.password.value;
+
+            //submit으로 바로 제출하게 되면
+            // 형식에 맞지 않는 내용도 전달해버리기 때문에 
+            // 검증과정이 필요하다
+            if(myId.length == 0){
+                alert('아이디 입력해라');
+                return;// if문에서 return하면 메서드를 빠저나감
+            }
+            if(age.length == ''){
+                alert('나이 입력해라');
+                return;
+            }
+            if(pwd.length == ''){
+                alert('비번 입력해라');
+                return;
+            }
+            //목적지
+            f.action = 'login.html'
+
+            // 전송방식
+            form.method = 'get';
+
+            // 입력 데이터 전송
+            // form이 가진 name 속성이 action으로 지정해둔 페이지의 파라미터로 전달
+            f.submit();
+
+        }
+        let button = document.querySelector("input[type='button']");
+        button.addEventListener("click", function(e){
+            check();
+        })
+    </script>
+</body>
+</html>

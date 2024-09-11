@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #all { 
+			width:960px; 
+			border: solid 3px black; 
+			background-color: rgb(182, 178, 149);
+		}
+        #top{
+			border-bottom: solid 1px black;
+		}
+        .second { 
+			float:left; 
+		}
+        div#leftDiv { 
+			padding:5px; 
+			height:370px; 
+			border-right:solid 1px black; 
+		}
+        div#rightDiv { 
+			padding:3px; 
+			margin-left: 5px;
+		}
+        #b_book_search { 
+			padding:5px 10px; 
+			width: 80px;
+		}
+        #btn_search { 
+			padding:5px 20px; 
+			background-color: white; 
+			border: 1px solid #bfbfbf; 
+			color: #bfbfbf; 
+			width: 80px;
+		}
+        .b_view { 
+			width:80px; 
+			padding:4px; 
+			background-color: rgb(182, 178, 149); 
+			border: 1px solid red; 
+			color: red; 
+		}
+		.b_view :hover{
+			background-color: darkred;
+		}
+        .b_rent { 
+			width:80px; 
+			padding:4px;
+			background-color: rgb(182, 178, 149); 
+			border: 1px solid blue; 
+			color: blue; 
+		}
+        
+        #rightDiv input {
+			width:745px; padding:5px; 
+		}
+        table { 
+			border-collapse: collapse; 
+			table-layout:fixed; 
+		}
+        tr { 
+			border: solid 1px black; 
+		}
+        td { 
+			padding:13px 8px; 
+		}
+        tr>td:nth-child(1) { width:50px; }
+        tr>td:nth-child(2) { width:450px; }
+        tr>td:nth-child(3) { width:100px; }
+        tr>td:nth-child(4) { width:50px; }
+        tr>td:nth-child(5) { width:50px; }
+    </style>
+</head>
+<body>
+	<div id="all">
+		<div id="top">
+			<img style="width:200px;" src="https://static.wikia.nocookie.net/escapefromtarkov_ko_gamepedia/images/e/e6/Site-logo.png/revision/latest?cb=20210715132602"/>
+		</div>
+		<div id="leftDiv" class="second">
+			<button id="b_book_search">도서검색</button>
+		</div>
+		<div id="rightDiv" class="second">
+			<input type="text" placeholder="도서명 검색"/>
+			<button id="btn_search">검색</button>
+			<br/>
+			<div class="second" style="padding:10px; float: right;">
+				정렬방식
+				<select>
+					<option value='' selected>도서명 오름차순</option>
+					<option value='' selected>도서명 내림차순</option>
+					<option value='' selected>선택하세요</option>
+				</select>
+			</div>
+				<div style="clear:both;"></div>
+			<table>
+				<tr>
+					<td>1</td>
+					<td>도서명</td>
+					<td>대출중</td>
+					<td><button class="b_view">보기</button></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>도서명</td>
+					<td>대출가능</td>
+					<td><button class="b_view">보기</button></td>
+					<td><button class="b_rent">대출</button></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>도서명</td>
+					<td>대출가능</td>
+					<td><button class="b_view">보기</button></td>
+					<td><button class="b_rent">대출</button></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>도서명</td>
+					<td>대출가능</td>
+					<td><button class="b_view">보기</button></td>
+					<td><button class="b_rent">대출</button></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>도서명</td>
+					<td>대출가능</td>
+					<td><button class="b_view">보기</button></td>
+					<td><button class="b_rent">대출</button></td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</body>
+</html>
