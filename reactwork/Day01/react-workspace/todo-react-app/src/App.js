@@ -25,13 +25,18 @@ export default function App() {
   setItems([...newItems]);
   }
 
+  const editItem = () => {
+    setItems([...items]);
+  }
+
   let todoItems = items.length > 0 && (
   <Paper style={{margin:16}}>
     <List>
     {items.map((item) =>(
       <Todo 
         item={item} 
-        key={item.id} 
+        key={item.id}
+        editItem={editItem}
         deleteItem={deleteItem}/>
     ))}
     </List>
