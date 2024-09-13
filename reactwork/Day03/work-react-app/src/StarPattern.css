@@ -1,0 +1,9 @@
+.star-pattern {
+    font-family: monospace; /* 고정 폭 글꼴을 사용하여 정렬을 유지 */
+    white-space: pre; /* 공백과 줄바꿈을 그대로 유지 */
+    text-align: center; /* 중앙 정렬 */
+  }
+  
+  .line {
+    font-size: 1.5rem; /* 별의 크기 조정 */
+  }
