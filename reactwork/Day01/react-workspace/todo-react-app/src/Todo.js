@@ -33,12 +33,12 @@ const Todo  = (props) => {
         deleteItem(item);
     }
     const editEventHandler = (e) => {
-        item.title =e.target.value;
+        setItem({...item,title:e.target.value});
         editItem();
     }
     const checkboxEventHandler = (e) =>{
         item.done = e.target.checked;
-        editItem();
+        editItem(item);
     }
     //turnOffReadOnly함수 정의
     const turnOffReadOnly = () => {
@@ -48,6 +48,7 @@ const Todo  = (props) => {
     const turnOnReadOnly = (e) => {
         if(e.key === "Enter"){
             setReadOnly(true);
+            editItem(item);
         }
     }
 

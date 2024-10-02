@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class TodoDTO {
-	// DTO에는 userId가 없다.
-	// userId는 애플리케이션과 DB에서 사용자를 구별하기 위한
-	// 고유 식별자로 사용하기 때문에 숨길 수 있으면 숨기는 것이 좋다.
+	//DTO에는 userID가 없다.
+	//userID는 애플리케이션과 DB에서 사용자를 구별하기 위한
+	//고유 식별자로 사용하기 때문에 숨길 수 있으면 숨기는 것이 좋다.
 	private String id;
 	private String title;
 	private boolean done;
@@ -24,12 +24,13 @@ public class TodoDTO {
 		this.title = entity.getTitle();
 		this.done = entity.isDone();
 	}
-	   //DTO -> Entity
-	   public static TodoEntity toEntity(TodoDTO dto) {
-	      return TodoEntity.builder()
-	            .id(dto.getId())
-	            .title(dto.getTitle())
-	            .done(dto.isDone())
-	            .build();
-	   }
+	
+	//DTO -> Entity
+	public static TodoEntity toEntity(TodoDTO dto) {
+		return TodoEntity.builder()
+				.id(dto.getId())
+				.title(dto.getTitle())
+				.done(dto.isDone())
+				.build();
+	}
 }

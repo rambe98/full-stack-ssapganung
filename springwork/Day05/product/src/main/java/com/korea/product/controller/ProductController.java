@@ -5,7 +5,9 @@ package com.korea.product.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,17 +27,16 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	private final ProductService productService;
 	
-//	@PostMapping //post = 상품 추가
-//	public ResponseEntity<?> addProduct(@RequestBody ProductDTO dto){
-//		ProductDTO products = productService.addProduct(dto);
-//		return ResponseEntity.ok().body(products);
-//	}
-	
-	//상품추가
-	@PostMapping
-    public ResponseEntity<?> addProduct(){
-	   return ResponseEntity.ok().body(productService.addProduct());
+	@PostMapping //post = 상품 추가
+	public ResponseEntity<?> addProduct(@RequestBody ProductDTO dto){
+		ProductDTO products = productService.addProduct(dto);
+		return ResponseEntity.ok().body(products);
 	}
+	//상품추가
+//	@PostMapping
+//    public ResponseEntity<?> addProduct(){
+//	   return ResponseEntity.ok().body(productService.addProduct());
+//	}
 	
     // 필터링된 상품 조회하기
 	@GetMapping
@@ -47,9 +48,22 @@ public class ProductController {
         return ResponseEntity.ok().body(Products); // 결과를 응답으로 반환
     }
 	
-	@PutMapping
-	public ResponseEntity<?> updateProduct(@RequestBody ProductDTO dto) {
-	    List<ProductDTO> updatedUser = productService.updateProduct(ProductDTO.toEntity(dto));
-	    return ResponseEntity.ok(updatedUser);
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDTO dto) {
+	    List<ProductDTO> u_DTO = productService.updateProduct(id, dto);
+		if(u_DTO != null) {
+			return ResponseEntity.ok().body(u_DTO);
+		}
+		return ResponseEntity.badRequest().body("업데이트 진행되지 않음");
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+		boolean isDeleted = productService.deleteProduct(id);
+	    if (isDeleted) {
+	        return ResponseEntity.ok("Product deleted successfully");
+	    } else {
+	        return ResponseEntity.status(404).body("Product not found with id " + id);
+	    }
 	}
 }
