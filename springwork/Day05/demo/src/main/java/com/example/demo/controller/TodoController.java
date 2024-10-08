@@ -31,9 +31,6 @@ public class TodoController {
 	public TodoController(TodoService service) {
 		this.service = service;
 	}
-	
-	
-
 	//다른 클래스에 있는 메서드를 사용하기위해 객체를 우선 만들어야 한다.
 	//스프링에서는 객체를 이미 만들어놨다. 주입만 하면 된다.
 	
