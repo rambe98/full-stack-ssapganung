@@ -14,3 +14,7 @@ table{
     text-align: center;
     background: #f0f0f0;
 }
+
+button{
+    width: 50%;
+}
