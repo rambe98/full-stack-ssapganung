@@ -1,12 +1,15 @@
 package com.korea.user.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,9 +29,13 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	private TokenProvider tockenProvider; //토큰 발급 주체
+	private TokenProvider tokenProvider; //토큰 발급 주체
 	
-	@GetMapping("idCheck")
+	//id 중복 조회
+	//POST,PUT,DELET로 전달하면 데이터들이 RequestBody로 전송
+	//GET으로 전달할 때는 RequestBody로 전송되지 않음
+	@PostMapping("idCheck")
+	//public ResponseEntity<?> isIdDuplicate(@RequestParam("userId") UserDTO dto){
 	public ResponseEntity<?> isIdDuplicate(@RequestBody UserDTO dto){
 		boolean check = userService.isIdDuplicated(dto.getId());
 		ResponseDTO<Boolean> response = ResponseDTO.<Boolean>builder().value(check).build();
@@ -53,7 +60,7 @@ public class UserController {
 		//만약 유저가 조회된다면
 		if(user != null) {
 			//토큰 발급
-			final String token = tockenProvider.create(user);
+			final String token = tokenProvider.create(user);
 			final UserDTO responseUserDTO = UserDTO.builder()
 											.id(user.getId())
 											.idx(user.getIdx())
@@ -68,6 +75,24 @@ public class UserController {
 	         return ResponseEntity.badRequest().body(responseDTO);   
 	      }
 	}
+	@GetMapping("name")
+	public ResponseEntity<?> getUserName(@RequestHeader("Authorization") String token){
+		String actualToken = token.substring(7);
+	    // JWT에서 유저 id 추출
+	    String userId = tokenProvider.validateAndGetUserId(actualToken);
+	    
+	    UserEntity entity = userService.getUserName(userId); 
+	    // 엔티티 > 디티오
+	    UserDTO dto = new UserDTO(entity);
+	    //fltmxmdp anRdma
+	    List<UserDTO> dtos = Arrays.asList(dto);
+	    // responseDTO의 data필드에 넣어 반환
+	    ResponseDTO<UserDTO> response = ResponseDTO.<UserDTO>builder().data(dtos).build();
+	    return ResponseEntity.ok().body(response);
+	    	    
+	}
+	
+	
 
 //	@GetMapping("/{email}")// 이메일로 사용자 검색
 //	public ResponseEntity<UserDTO> getUserByEmail(@PathVariable String email) {

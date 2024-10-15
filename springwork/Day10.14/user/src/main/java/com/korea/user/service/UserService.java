@@ -45,6 +45,16 @@ public class UserService {
 	public UserEntity getByCredential(String id,String pwd) {
 		return repository.findByIdAndPwd(id,pwd);
 	}
+	//이름 가져오기
+	public UserEntity getUserName(String id) {
+		Optional<UserEntity> option = repository.findById(id);
+		
+		if(option.isPresent()) {
+			UserEntity entity = option.get();
+			return entity;
+		}
+	    return null;
+	}
 	
 	
 	

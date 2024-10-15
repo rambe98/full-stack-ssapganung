@@ -3,6 +3,7 @@ import App from "./App";
 import Login from "./users/Login";
 import Signup from "./users/Signup";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import MyInfo from "./users/MyInfo";
 
 //import {Typography,Box} from "@mui/material";
 //import Signup from './Signup';
@@ -24,7 +25,7 @@ export default function AppRouter(){
                 <Routes>
                     <Route path="/main" element={<App />}/>
                     <Route path="/" element={<Login />}/>
-                    <Route path="/Signup" element={<Signup />}/>
+                    <Route path="/signup" element={<Signup />}/>
                 </Routes>
             </BrowserRouter>
             {/* <Box mt={5}>

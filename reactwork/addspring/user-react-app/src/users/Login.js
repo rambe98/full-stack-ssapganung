@@ -1,5 +1,7 @@
 import React from 'react';
 import { signin } from '../service/ApiService';
+import Signup from './Signup';
+import { Form } from 'react-router-dom';
 
 const Login = () => {
     const handlesubmit = (event) => {
@@ -12,6 +14,9 @@ const Login = () => {
         console.log(pwd);
         //db에 넘겨 서 아이디 비밀번호 검증받고 토큰 받아서 로컬 스토리지에 저장함
         signin({id:id,pwd:pwd})
+    }
+    function toSignup(){
+        window.location.href="/signup";
     }
 
     return(
@@ -30,7 +35,7 @@ const Login = () => {
                     <tr>
                         <td colSpan="2" align='center'>
                             <input type='submit' value="로그인"/>
-                            <input type='submit' value="회원가입"/>
+                            <input type='button' value="회원가입" onClick={toSignup}/>
                         </td>
                     </tr>
                 </tbody>

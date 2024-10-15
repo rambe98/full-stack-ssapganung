@@ -57,7 +57,7 @@ export function signin(userDTO){
 export function signout(){
     // 로컬스토리지의 값을 null로 만든다.
     localStorage.setItem("ACCESS_TOKEN",null);
-    window.location.href="/login"
+    window.location.href="/"
 }
 // 회원 생성
 export function signup(userDTO){
