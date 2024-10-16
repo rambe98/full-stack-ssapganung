@@ -55,6 +55,21 @@ public class UserService {
 		}
 	    return null;
 	}
+	//수정내용 반영하기
+	public void modify(UserDTO dto) {
+	    // Optional로 ID를 통해 사용자 찾기
+	    Optional<UserEntity> userEntityOptional = repository.findById(dto.getId());
+	    // 사용자가 존재할 경우 업데이트 로직 실행
+	    if(userEntityOptional.isPresent()) {
+	    	UserEntity entity = userEntityOptional.get();
+	    	entity.setPwd(dto.getPwd());
+	    	entity.setName(dto.getName());
+	    	entity.setEmail(dto.getEmail());
+		    
+	    	// 업데이트된 사용자 정보 저장
+		    repository.save(entity);
+	    }
+	}
 	
 	
 	

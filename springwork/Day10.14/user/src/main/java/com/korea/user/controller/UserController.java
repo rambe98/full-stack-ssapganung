@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,7 +92,10 @@ public class UserController {
 	    return ResponseEntity.ok().body(response);
 	    	    
 	}
-	
+	@PutMapping// 사용자 정보 수정 (ID 기반)
+	public void modify(@RequestBody UserDTO dto) {
+	    userService.modify(dto);
+	}
 	
 
 //	@GetMapping("/{email}")// 이메일로 사용자 검색
@@ -100,11 +104,7 @@ public class UserController {
 //	    return ResponseEntity.ok(user);
 //	}
 //	
-//	@PutMapping// 사용자 정보 수정 (ID 기반)
-//	public ResponseEntity<?> updateUser(@RequestBody UserDTO dto) {
-//	    List<UserDTO> updatedUser = userService.updateUser(UserDTO.toEntity(dto));
-//	    return ResponseEntity.ok(updatedUser);
-//	}
+
 //	
 //	@DeleteMapping("/{id}")
 //	public ResponseEntity<?> deleteUser(@PathVariable Long id) {

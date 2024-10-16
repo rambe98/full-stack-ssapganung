@@ -26,11 +26,31 @@ export default function MyInfo(){
         return<div>Loading...</div>
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const id = user.id;
+        const pwd = data.get("pwd");
+        const name = data.get("name");        
+        const email = data.get("email");
+
+        console.log(id);
+        console.log(pwd);
+        console.log(name);
+        console.log(email);
+
+        let users = {id:id,pwd:pwd,name:name,email:email} 
+        
+        call("/users","PUT",users)
+        .then(result => {
+            window.location.href="/main";
+        })
+    }
 
     return(
         <div>
-            <form noValidate>
-                <table border="1" align='center'>
+            <form noValidate onSubmit={handleSubmit}>
+                <table border="1" align='center' >
                     <caption>:::내 정보:::</caption>
                     <tr>
                         <th>아이디</th>
