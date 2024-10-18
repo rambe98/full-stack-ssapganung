@@ -1,0 +1,23 @@
+name : CI #워크 플로우의 이름 지정
+
+
+on: #워크 플로우가 시작될 조건을 지정
+  push: #코드가 repo에 push될 때 실행됨
+    branches: [ main ] #브랜치에 코드가 푸시될 때만 실행됨
+
+jobs: # 워크 플로우 내에서 수행할 작업을 정의하는 부분 ,여러개의 작업을 설정할 수 있고,작업은 병렬 또는 순차적으로 실행할 수 있음
+  build: #워크플로우에서 하나의 작업을 의미함
+    runs-on: ubuntu-latest #작업이 실행되는 환경을 정의하는 키워드, 이 워크 플로우는 최신 버전의 Ubuntu 리눅스 환경에서 실행됨
+#실행 스텝 지정
+steps:
+  - uses: actions/checkout@v3
+
+  - uses: actions/setop-java@v3
+    with:
+      distribution: 'corretto'
+      java-version: '17'
+  - name: Grant execute permission for gradlew
+    run: chmod +x gradlew
+  
+  - name: Build with Gradle
+    run: ./gradlew clean build
