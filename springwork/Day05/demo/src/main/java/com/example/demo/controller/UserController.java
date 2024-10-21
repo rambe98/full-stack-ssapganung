@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/auth")
+@RequestMapping("auth")
 public class UserController {
 	@Autowired
 	private UserService userService;

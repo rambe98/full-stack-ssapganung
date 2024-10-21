@@ -14,7 +14,7 @@ if(hostname == "localhost"){
     backendHost = "http:localhost:5000"
     
 }else{
-    backendHost = "http://api.han-portfolio.site";
+    backendHost = "https://api.han-portfolio.site";
 }
 
 export const API_BASE_URL = `${backendHost}`
