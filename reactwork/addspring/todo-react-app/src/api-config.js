@@ -14,7 +14,7 @@ if(hostname == "localhost"){
     backendHost = "http:localhost:5000"
     
 }else{
-    backendHost = "http://springboot-developer-env.eba-5ytimhyc.ap-northeast-2.elasticbeanstalk.com/";
+    backendHost = "http://api.han-portfolio.site";
 }
 
 export const API_BASE_URL = `${backendHost}`
