@@ -1,0 +1,12 @@
+.container{
+    height: 100vh;
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+};
+
+button{
+    width: 50%;
+}

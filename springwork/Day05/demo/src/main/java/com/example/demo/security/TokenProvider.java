@@ -3,6 +3,9 @@ package com.example.demo.security;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -54,6 +57,20 @@ public class TokenProvider {
 				.compact(); //토큰을 . 으로 구분된 하나의 문자열로 만들어준다
 				
 		
+	}
+	
+	public String create(Authentication authentication) {
+		
+		ApplicationOauth2User userPrincipal= (ApplicationOauth2User)authentication.getPrincipal();
+		
+		Date expiryDate = Date.from(Instant.now().plus(1,ChronoUnit.DAYS));
+		return Jwts.builder()
+				.signWith(SignatureAlgorithm.HS512,SECRET_KEY)
+				.setSubject(userPrincipal.getName())
+				.setIssuer("demo app") //토큰 발행 주체
+				.setIssuedAt(new Date()) //토큰 발행 날짜
+				.setExpiration(expiryDate) // exp
+				.compact(); //토큰을 . 으로 구분된 하나의 문자열로 만들어준다
 	}
 	//토큰을 받아서 검증을 하는 메서드
 	public String validateAndeGetUserId(String token) {

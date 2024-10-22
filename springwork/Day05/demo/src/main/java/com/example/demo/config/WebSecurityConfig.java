@@ -15,6 +15,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.demo.security.JwtAuthenticationFilter;
+import com.example.demo.security.OAuthSuccessHandler;
+import com.example.demo.security.OAuthUserServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +24,12 @@ public class WebSecurityConfig {
    
    @Autowired
    private JwtAuthenticationFilter jwtAuthenticationFilter;
+   
+   @Autowired
+   private OAuthUserServiceImpl oAuthUserService;
+   
+   @Autowired
+   private OAuthSuccessHandler oAuthSuccesshandler;
    
    @Bean
    protected DefaultSecurityFilterChain securityFilterChain(
@@ -34,12 +42,21 @@ public class WebSecurityConfig {
          .sessionManagement(sessionManagementConfigurer ->
                sessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
            )
-         
          .authorizeHttpRequests(authorizeRequestsConfigurer -> 
             authorizeRequestsConfigurer
-            .requestMatchers("/", "/auth/**").permitAll()
+            .requestMatchers("/", "/auth/**","/oauth2/**").permitAll()
             .anyRequest().authenticated()
-         );
+         )
+      	.oauth2Login()
+      	.redirectionEndpoint()
+      	.baseUri("/oath2/callback/*")
+      	.and()
+      	//OAuth2제공자로부터 사용자 정보를 가져올 때 사용하는 엔드포인트를 설정한다.
+      	//이 부분은OAuth2인증이 성공한 후, 사용자 프로필 데이터를 가져오는 역할 
+      	.userInfoEndpoint()
+      	.userService(oAuthUserService)
+      	.and()
+      	.successHandler(oAuthSuccesshandler);//아무 주소도 넣지 않았다면 베이스 유알엘인 로컬호스트 5000으로 리다이렉트한다.
 
       http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

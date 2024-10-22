@@ -24,22 +24,37 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'mysql:mysql-connector-java:8.0.33'  // MySQL 커넥터 추가
-    runtimeOnly 'com.h2database:h2'  // H2 데이터베이스 추가
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation 'com.google.guava:guava:31.1-jre'
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
-    implementation 'io.jsonwebtoken:jjwt-gson:0.11.5'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    
+   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+   implementation 'org.springframework.boot:spring-boot-starter-web'
+   compileOnly 'org.projectlombok:lombok'
+   runtimeOnly 'com.h2database:h2'
+   implementation 'mysql:mysql-connector-java:8.0.33'
+   annotationProcessor 'org.projectlombok:lombok'
+   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+   testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+   // https://mvnrepository.com/artifact/com.google.guava/guava
+   implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+   
+   // Test용 Lombok 추가
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+   
+   
+   
+   //Jwt
+   // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+   implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+   // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+   runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+   // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-gson
+   implementation group: 'io.jsonwebtoken', name: 'jjwt-gson', version: '0.11.5'
+   
+   //spring boot security
+   // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.2.4'
+   // https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
+   implementation group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '6.3.1'
+
 }
 
 tasks.named('test') {
@@ -52,5 +67,9 @@ tasks.named('jar'){
 
 
 
+
+   
+   
+   
 
 
