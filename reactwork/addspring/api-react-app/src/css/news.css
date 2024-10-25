@@ -9,13 +9,6 @@ body {
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #00ffcc; /* 네온 색상 */
-    margin-bottom: 20px;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

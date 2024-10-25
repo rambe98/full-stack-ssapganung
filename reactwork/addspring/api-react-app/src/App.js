@@ -5,6 +5,8 @@ import MultiButtons from './MultiButtons';
 import Address from './api/Address';
 import BookSearch from './api/BookSearch';
 import NewsSearch from './api/NewsSearch';
+import MapContainer from './api/Map';
+import MapContainer2 from './api/Map2';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/address" element={<Address/>}/>
           <Route path="/search" element={<BookSearch/>}/>
           <Route path="/news" element={<NewsSearch/>}/>
+          <Route path="/map" element={<MapContainer/>}/>
+          <Route path="/map2" element={<MapContainer2/>}/>
         </Routes>
       </BrowserRouter>
     </div>
