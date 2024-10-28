@@ -22,6 +22,9 @@ export default function MultiButtons (){
             case 'map2':
                 navigate('/map2');
                 break;  
+            case 'map3':
+                navigate('/map3');
+                break;  
         }
     }
 
@@ -42,6 +45,9 @@ export default function MultiButtons (){
             </button>
             <button id="map2" onClick={handleButtonClick}>
                 카카오 지도2 api
+            </button>
+            <button id="map3" onClick={handleButtonClick}>
+                주소 + 지도 api
             </button>
         </div>
     );
