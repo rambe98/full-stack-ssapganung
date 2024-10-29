@@ -5,6 +5,7 @@ import MyButton from "./components/Mycomponents";
 import Counter from "./components/Counter";
 import Total from "./components/Total";
 import ItemList from "./components/ItemList";
+import EventButton from "./components/EventButton";
 
 const App = ()=>{
     const numbers = [1, 2, 3, 4,5,6,7,8,9]; 
@@ -25,8 +26,10 @@ const App = ()=>{
             <MyButton onPress={()=> alert('default')}/>
 
             <Counter/> */}
-            <Total numbers={numbers} />
-            <ItemList fruits={fruits}/>
+            {/* <Total numbers={numbers} />
+            <ItemList fruits={fruits}/> */}
+            <EventButton/>
+
             
         </View>
     )
