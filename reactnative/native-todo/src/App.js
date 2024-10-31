@@ -6,7 +6,8 @@ import Input from "./components/Input";
 import { images } from "./image";
 import IconButton from "./components/IconButton";
 import Task from "./components/Task";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AppLoading from 'expo-app-loading';
 
 const Container = styled.SafeAreaView`
     flex:1;
@@ -27,45 +28,55 @@ const List = styled.ScrollView`
 `;
 
 export default function App() {
-    const [newTask, setNewTask] = useState('');
     const width = Dimensions.get('window').width;
-    const [tasks,setTasks] = useState({
-        '1':{id:'1', text:'스껄',completed:false},
-        '2':{id:'2', text:'응애',completed:true},
-        '3':{id:'3', text:'킹아',completed:false},
-        '4':{id:'4', text:'집가',completed:false},
-    });
+
+    const [isReady, SetIsReady] = useState(false);
+    const [newTask, setNewTask] = useState('');
+    const [tasks, setTasks] = useState({});
+
+    const _saveTasks = async tasks => {
+        try {
+            await AsyncStorage.setItem('tasks', JSON.stringify(tasks));
+            setTasks(tasks);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+    const _loadTasks = async () => {
+        const loadedTasks = await AsyncStorage.getItem('tasks');
+        setTasks(JSON.parse(loadedTasks || '{'));
+    };
     const _handleTextChange = text => {
         setNewTask(text);
-    }
+    };
     const _addTask = () => { //할일 추가
-        const ID= Date.now().toString();
-        const newTaskObject ={
-            [ID]:{id:ID,text:newTask,completed:false},
+        const ID = Date.now().toString();
+        const newTaskObject = {
+            [ID]: { id: ID, text: newTask, completed: false },
         };
         setNewTask('');
-        setTasks({...tasks, ...newTaskObject});
+        _saveTasks({ ...tasks, ...newTaskObject });
     };
-    const _deleteTask= id=>{ //할일 제거
-        const currentTasks=Object.assign({}, tasks);
+    const _deleteTask = id => { //할일 제거
+        const currentTasks = Object.assign({}, tasks);
         delete currentTasks[id];
-        setTasks(currentTasks);
+        _saveTasks(currentTasks);
     };
-    const _toggleTask = id=>{ //체크박스
-        const currentTasks=Object.assign({}, tasks);
+    const _toggleTask = id => { //체크박스
+        const currentTasks = Object.assign({}, tasks);
         currentTasks[id]['completed'] = !currentTasks[id]['completed'];
-        setTasks(currentTasks);
+        _saveTasks(currentTasks);
     };
-    const _updateTask = item=>{ //수정
-        const currentTasks=Object.assign({}, tasks);
+    const _updateTask = item => { //수정
+        const currentTasks = Object.assign({}, tasks);
         currentTasks[item.id] = item;
-        setTasks(currentTasks);
+        _saveTasks(currentTasks);
     };
-    const _onBlur = ()=>{
+    const _onBlur = () => {
         setNewTask('');
     };
 
-    return (
+    return isReady ? (
         <ThemeProvider theme={theme}>
             <Container>
                 <Title>TODO List</Title>
@@ -83,8 +94,8 @@ export default function App() {
                 <List width={width}>
                     {Object.values(tasks)
                         .reverse()
-                        .map(item=>(
-                            <Task 
+                        .map(item => (
+                            <Task
                                 key={item.id}
                                 item={item}
                                 deleteTask={_deleteTask}
@@ -96,5 +107,11 @@ export default function App() {
 
             </Container>
         </ThemeProvider>
+    ) : (
+        <AppLoading
+            startAsync={_loadTasks}
+            onFinish={()=>SetIsReady(true)}
+            onError={console.error}
+        />
     );
 }
