@@ -10,13 +10,13 @@ const Icon = styled.Image`
   height: 30px;
   margin: 10px;
 `;
-const IconButton = ({ type, onPressOut,id}) => {
+const IconButton = ({ type, onPressOut,id,completed}) => {
     const _onPressOut =()=>{
         onPressOut(id);
     }
     return (
       <TouchableOpacity onPressOut={_onPressOut}>
-        <Icon source={type} />
+        <Icon source={type} completed={completed}/>
       </TouchableOpacity>
     );
   };
