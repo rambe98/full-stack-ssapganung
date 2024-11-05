@@ -5,6 +5,8 @@ import Counter from './components/Counter'
 import Form from './components/Form'
 import { useState } from 'react'
 import Timer from './components/Timer'
+import Length from './components/Length'
+import Dog from './components/Dog'
 
 const Container = styled.View`
     flex:1;
@@ -21,8 +23,10 @@ const App = () => {
         setFormVisible(prev => !prev);
     };
     return (<Container>
-        {isFormVisible && <Form />}
-        <Button title={isFormVisible ? "Hide" : "Show"} onPress={toggleForm} />
+        {/* {isFormVisible && <Form />}
+        <Button title={isFormVisible ? "Hide" : "Show"} onPress={toggleForm} /> 
+        <Length/>*/}
+        <Dog/>
     </Container>)    
 }
 
