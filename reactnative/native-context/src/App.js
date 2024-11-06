@@ -1,6 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider as StyledThemeProvider } from 'styled-components/native'
 import User from './components/User'
+import UserContext, { UserProvider } from './contexts/User';
+import Input from './components/Input';
+import { ThemeProvider } from './contexts/ThemeContext';
+import ThemeComponent from './components/ThemeComponent';
+import CartScreen from './components/CartScreen';
+import CartContext, { CartProvider } from './contexts/CartContext';
+import { UserProvider2 } from './contexts/UserContext';
+import HomeScreen from './components/HomeScreen';
+
 
 const Container = styled.View`
     flex : 1;
@@ -10,9 +19,11 @@ const Container = styled.View`
 `;
 
 const App = () => {
-    return (<Container>
-        <User/>
-    </Container>)
-}
+    return (
+            <UserProvider2>
+                <HomeScreen/>
+            </UserProvider2>
+    );
+};
 
 export default App;

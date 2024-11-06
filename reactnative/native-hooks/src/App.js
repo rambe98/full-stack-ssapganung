@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Timer from './components/Timer'
 import Length from './components/Length'
 import Dog from './components/Dog'
+import ScrollComponent from './components/ScrollComponent'
 
 const Container = styled.View`
     flex:1;
@@ -25,8 +26,9 @@ const App = () => {
     return (<Container>
         {/* {isFormVisible && <Form />}
         <Button title={isFormVisible ? "Hide" : "Show"} onPress={toggleForm} /> 
-        <Length/>*/}
-        <Dog/>
+        <Length/>
+        <Dog/>*/}
+        <ScrollComponent/>
     </Container>)    
 }
 
