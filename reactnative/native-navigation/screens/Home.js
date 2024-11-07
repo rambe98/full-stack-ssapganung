@@ -1,0 +1,29 @@
+import React from 'react';
+import { Button } from 'react-native';
+import styled from 'styled-components';
+
+const Container = styled.SafeAreaView`
+  background-color: #ffffff;
+  align-items: center;
+  flex : 1;
+  justify-content: center;
+`;
+const StyledText = styled.Text`
+  font-size: 30px;
+  margin-bottom: 10px;
+`;
+
+const Home = ({ navigation }) => {
+    
+
+  return (
+    <Container>
+      <StyledText>메인 화면</StyledText>
+      <Button 
+        title="go to the list screen"
+        onPress={()=>navigation.navigate('List')}/>
+    </Container>
+  );
+};
+
+export default Home;
