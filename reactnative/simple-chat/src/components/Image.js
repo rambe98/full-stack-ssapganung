@@ -81,7 +81,7 @@ const Image = ({ url, imageStyle, rounded, showButton, onChangeImage }) => {
   return (
     <Container>
       <StyledImage
-        source={{ uri: `${url}?${Date.now()}` }}
+        source={{ uri: url }}
         style={imageStyle}
         rounded={rounded}
       />
