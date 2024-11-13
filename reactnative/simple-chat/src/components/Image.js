@@ -71,7 +71,7 @@ const Image = ({ url, imageStyle, rounded, showButton, onChangeImage }) => {
       });
 
       if (!result.cancelled) {
-        onChangeImage(result.uri);
+        onChangeImage(result.assets[0].uri);
       }
     } catch (e) {
       Alert.alert('Photo Error', e.message);
