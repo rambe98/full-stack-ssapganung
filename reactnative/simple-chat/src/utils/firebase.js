@@ -22,12 +22,11 @@ export const signin = async ({ email, password }) => {
 // Image upload function
 const uploadImage = async uri => {
   if (uri.startsWith('https')) {
-    return uri;
+    return URL;
   }
 
   const response = await fetch(uri);
   const blob = await response.blob();
-
   const { uid } = auth.currentUser;
   const storageRef = ref(storage, `/profile/${uid}/photo.png`);
   await uploadBytes(storageRef, blob, { contentType: 'image/png' });
