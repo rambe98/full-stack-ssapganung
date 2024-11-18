@@ -19,7 +19,6 @@ const Profile = () => {
   const theme = useContext(ThemeContext);
 
   const user = getCurrentUser();
-
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
 
   const _handleLogoutButtonPress = async () => {
