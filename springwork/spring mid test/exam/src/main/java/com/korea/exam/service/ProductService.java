@@ -35,14 +35,14 @@ public class ProductService {
 	    return new ProductDTO(entity);
 	}
 	
-	public List<ProductDTO> updateProduct(Long id, ProductDTO dto) {
+	public ProductDTO updateProduct(Long id, ProductDTO dto) {
 		Optional<ProductEntity> original = repository.findById(id);
 	    if(original.isPresent()){
 	        ProductEntity entity = original.get();
 	        entity.setName(dto.getName());
 	        entity.setPrice(dto.getPrice());
 	        repository.save(entity);
-	        return Arrays.asList(new ProductDTO(entity));
+	        return new ProductDTO(entity);
 	    }
 	    return null;
 	}

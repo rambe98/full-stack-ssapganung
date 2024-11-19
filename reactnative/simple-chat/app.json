@@ -12,9 +12,13 @@
       "backgroundColor": "#3679fe"
     },
     "ios": {
+      "bundleIdentifier": "com.rambe98.rnsimplechat",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rambe98.rnsimplechat",
+      "versionCode": "1",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -22,6 +26,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fc00023c-d230-4270-b32e-a1b693809936"
+      }
+    },
+    "owner": "rambe98"
   }
 }
