@@ -20,7 +20,6 @@ public class ProductService {
 	public List<ProductEntity> create(final ProductEntity entity) {
 	    // Validations
 	    validate(entity);
-
 	    p_repository.save(entity);
 	    return p_repository.findAll();
 	}
