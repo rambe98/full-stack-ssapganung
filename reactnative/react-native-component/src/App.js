@@ -27,12 +27,13 @@ const App = ()=>{
             <MyButton title="킹  아" onPress={()=> alert('children')}>줴엔장</MyButton>
             <MyButton onPress={()=> alert('default')}/>
 
-            <Counter/> */}
+             */}
             {/* <Total numbers={numbers} />
             <ItemList fruits={fruits}/>
             <EventButton/>
-            <EventInput/> */}
-            <Button title='pressable'/>            
+            <EventInput/> 
+            <Button title='pressable'/>    */} 
+            <Counter/>       
         </View>
     )
 }
